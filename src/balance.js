@@ -23,6 +23,10 @@ class Balance {
         return this.Balance
     }
 
+    getBalance (){
+        return this.Balance
+    }
+
 
 }
 
