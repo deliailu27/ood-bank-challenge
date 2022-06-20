@@ -1,34 +1,32 @@
 
 const Transaction = require ('./transaction.js')
-class Balance {
+class Account {
     constructor(){
         this.Transactionlist=[]
         this.Balance =0
 
     }
 
-    deposit(transaction){
-        
+    transaction(date,amount){
+        const transaction = new Transaction (date, amount)
+        if (transaction.getTransactionAmount()==='error'){
+            return 'error: invalid transaction'
+        }
         this.Transactionlist.push(transaction)
-        this.Balance +=transaction.getDepositAmount()
-
-        return this.Balance
-
-    }
-
-    withdraw(transaction) {
-        this.Transactionlist.push(transaction)
-        this.Balance -= transaction.getWithdrawalAmount()
-
-        return this.Balance
+        this.Balance +=transaction.getTransactionAmount()
     }
 
     getBalance (){
         return this.Balance
     }
 
+    gettransactionList(){
+        return this.Transactionlist
+
+    }
+
 
 }
 
 
-module.exports = Balance
+module.exports = Account 

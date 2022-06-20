@@ -1,23 +1,25 @@
 
 class Transaction {
-    constructor(date,amount,type){
+    constructor(date,amount){
         this.date = date
         this.amount = amount 
-        this.type =type
+        
 
     }
 
-    getDepositAmount (){
-        if(this.type === 'deposit'){
-            return this.amount 
-        }
-
+    getTransaction(){
+        return this
     }
 
-    getWithdrawalAmount(){
-        if(this.type==='withdrawal'){
-            return this.amount 
+    getTransactionAmount(){
+        if (Number.isInteger(this.amount)){
+            return this.amount
         }
+        else return 'error' 
+    }
+
+    getDate(){
+        return this.date
     }
 
 

@@ -1,15 +1,29 @@
 const Transaction = require('../../src/transaction.js')
-const Balance = require ('../../src/balance.js')
+const Account = require ('../../src/balance.js')
 
 describe('bank',()=>{
     beforeEach(()=>{
-        balance = new Balance 
+        account = new Account
+    })
+
+
+    it ('return error if not interger',()=>{
+        const test = new Transaction('today','fish')
+        const expected = 'error'
+        const result = test.getTransactionAmount()
+        expect(result).toEqual(expected)
+    })
+
+    it ('invalid transaction',()=>{
+        const expected = 'error: invalid transaction'
+        const result = account.transaction('today','fish')
+        expect(result).toEqual(expected)
     })
 
     it('deposit',()=>{
-        
-
-        const result= balance.deposit(new Transaction('today', 1000, 'deposit'))
+    
+        account.transaction('today', 1000)
+        const result= account.Balance
         const expected = 1000
 
         expect(result).toEqual(expected)
@@ -18,18 +32,20 @@ describe('bank',()=>{
 
 
     it ('withdraw',()=>{
-        const result = balance.withdraw(new Transaction('today', 1000, 'withdrawal'))
+        
+        account.transaction('today', -1000)
         const expected = -1000
+        const result = account.Balance
 
         expect(result).toEqual(expected)
     })
 
     it ('get balance',()=>{
-        balance.deposit(new Transaction('today',1000,'deposit'))
-        balance.deposit(new Transaction('today',2000,'deposit'))
-        balance.withdraw(new Transaction('today',1000,'withdrawal'))
+        account.transaction('today',1000)
+        account.transaction('today',2000)
+        account.transaction('today',-1000)
 
-        const result= balance.getBalance()
+        const result= account.getBalance()
         const expected = 2000
 
         expect(result).toEqual(expected)
