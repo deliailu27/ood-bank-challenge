@@ -7,8 +7,8 @@ class Account {
 
     }
 
-    transaction(date,amount){
-        const transaction = new Transaction (date, amount)
+    transaction(amount){
+        const transaction = new Transaction (amount)
         if (transaction.getTransactionAmount()==='error'){
             return 'error: invalid transaction'
         }

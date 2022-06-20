@@ -1,7 +1,13 @@
 
+
 class Transaction {
-    constructor(date,amount){
-        this.date = date
+    constructor(amount){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+        this.date = today 
         this.amount = amount 
         
 
@@ -20,10 +26,12 @@ class Transaction {
 
     getDate(){
         return this.date
+        
     }
 
 
 }
+
 
 
 module.exports = Transaction 
