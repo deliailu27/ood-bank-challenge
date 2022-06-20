@@ -7,7 +7,7 @@ describe('bank',()=>{
     })
 
 
-    it ('return error if not interger',()=>{
+    it ('return error if not a number',()=>{
         const test = new Transaction('today','fish')
         const expected = 'error'
         const result = test.getTransactionAmount()
@@ -22,9 +22,9 @@ describe('bank',()=>{
 
     it('deposit',()=>{
     
-        account.transaction('today', 1000)
+        account.transaction('today', 1000.99)
         const result= account.Balance
-        const expected = 1000
+        const expected = 1000.99
 
         expect(result).toEqual(expected)
 

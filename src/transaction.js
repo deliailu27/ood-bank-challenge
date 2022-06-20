@@ -12,7 +12,7 @@ class Transaction {
     }
 
     getTransactionAmount(){
-        if (Number.isInteger(this.amount)){
+        if (!isNaN(this.amount)){
             return this.amount
         }
         else return 'error' 
