@@ -17,7 +17,8 @@ class Statement {
 
     getSingleTransaction(){
         for (let i = 0; i < this.transactions.length; i++) {
-            return `${this.transactions[i].date}|| ${this.transactions[i].amount}||       ||${this.balance}`
+            if(this.transactions[i].amount>=0){return `${this.transactions[i].date}|| ${this.transactions[i].amount}||       ||${this.balance}`}
+            else return `${this.transactions[i].date}||        || ${this.transactions[i].amount}||${this.balance}`
             
         }
 
