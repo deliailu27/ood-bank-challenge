@@ -52,8 +52,9 @@ describe('bank',()=>{
     })
 
     it ('get statement',()=>{
+        account.transaction(1000.00)
         const result= account.printStatement()
-        const expected = `TODO:add statement`
+        const expected = 'date       ||credit  ||debit  ||balance \n 21/06/2022|| 1000||       ||1000'
 
         expect(result).toEqual(expected)
     })
