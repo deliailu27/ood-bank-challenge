@@ -1,5 +1,5 @@
 const Transaction = require('../../src/transaction.js')
-const Account = require ('../../src/balance.js')
+const Account = require ('../../src/account.js')
 
 describe('bank',()=>{
     beforeEach(()=>{
@@ -23,7 +23,7 @@ describe('bank',()=>{
     it('deposit',()=>{
     
         account.transaction( 1000.99)
-        const result= account.Balance
+        const result= account.getBalance()
         const expected = 1000.99
 
         expect(result).toEqual(expected)
@@ -33,20 +33,27 @@ describe('bank',()=>{
 
     it ('withdraw',()=>{
         
-        account.transaction(-1000)
-        const expected = -1000
-        const result = account.Balance
+        account.transaction(-1000.00)
+        const expected = -1000.00
+        const result = account.getBalance()
 
         expect(result).toEqual(expected)
     })
 
     it ('get balance',()=>{
-        account.transaction(1000)
-        account.transaction(2000)
-        account.transaction(-1000)
+        account.transaction(1000.00)
+        account.transaction(2000.00)
+        account.transaction(-1000.00)
 
         const result= account.getBalance()
-        const expected = 2000
+        const expected = 2000.00
+
+        expect(result).toEqual(expected)
+    })
+
+    it ('get statement',()=>{
+        const result= account.printStatement()
+        const expected = `TODO:add statement`
 
         expect(result).toEqual(expected)
     })
